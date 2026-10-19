@@ -308,6 +308,59 @@ footer ul{margin:0;padding:0;list-style:none;columns:2;column-gap:36px}
 footer li{font-size:.78rem;color:var(--ink2);line-height:1.85;break-inside:avoid;margin-bottom:2px}
 footer .fine{margin-top:26px;font-family:var(--mono);font-size:.66rem;color:var(--ink3);letter-spacing:.04em;line-height:1.9}
 
+/* ---------- deal log ---------- */
+.deals-ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 6px}
+.deals-ctl select{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;padding:7px 10px;
+  border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:0;
+}
+.deals-ctl .sep{width:1px;height:22px;background:var(--rule);margin:0 4px}
+.deals-cnt{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.06em;margin:10px 0 0}
+.dl-year{
+  font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.16em;color:var(--ink2);
+  margin:30px 0 0;padding-bottom:8px;border-bottom:1.5px solid var(--ink);
+}
+.deal{border-bottom:1px solid var(--rule)}
+.deal summary{
+  list-style:none;cursor:pointer;display:grid;grid-template-columns:132px 1fr auto;
+  gap:2px 14px;align-items:baseline;padding:12px 0;
+}
+.deal summary::-webkit-details-marker{display:none}
+.deal summary:focus-visible{outline:2px solid var(--open);outline-offset:2px}
+.deal .meta{display:flex;gap:8px;align-items:baseline}
+.deal .dd{font-family:var(--mono);font-size:.7rem;color:var(--ink3)}
+.deal .ly{font-family:var(--mono);font-size:.62rem;color:var(--ink2);border:1px solid var(--rule);padding:0 5px}
+.deal .hd{font-weight:500;font-size:.94rem;min-width:0;overflow-wrap:anywhere}
+.deal .hd .by{color:var(--ink3);font-weight:400}
+.deal .hd .arr{color:var(--ink3);margin:0 5px;font-weight:400}
+.deal .am{font-family:var(--mono);font-size:.7rem;color:var(--ink2);text-align:right}
+.deal .kd{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;margin-left:8px;padding:0 5px;border:1px solid currentColor;vertical-align:.14em;white-space:nowrap}
+.deal[data-k="買収"] .kd{color:var(--contested)}
+.deal[data-k="調達"] .kd{color:var(--open)}
+.deal .nw{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;color:var(--contested);margin-left:6px;vertical-align:.14em}
+.deal .hint{grid-column:2/4;font-size:.8rem;color:var(--ink3);line-height:1.6}
+.deal .hint::before{content:"＋ ";color:var(--ink3)}
+.deal[open] .hint{display:none}
+.deal .body{
+  display:grid;grid-template-columns:132px 1fr;gap:8px 14px;
+  margin:0;padding:2px 0 18px;font-size:.86rem;
+}
+.deal .body dt{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--ink3);padding-top:4px}
+.deal .body dd{margin:0;color:var(--ink2);max-width:68ch}
+.deal .body dd.ba{color:var(--ink);border-left:3px solid var(--open);padding-left:10px}
+.deal .body dd.st{font-family:var(--mono);font-size:.7rem;color:var(--ink3)}
+.deals-note{margin:20px 0 0;max-width:72ch;font-size:.82rem;color:var(--ink3)}
+
+@media (max-width:760px){
+  .deal summary{grid-template-columns:1fr auto}
+  .deal .am{grid-row:1;grid-column:2}
+  .deal .hd{grid-column:1/3}
+  .deal .hint{grid-column:1/3}
+  .deal .body{grid-template-columns:1fr;gap:2px}
+  .deal .body dt{padding-top:10px}
+  .deals-ctl .sep{display:none}
+  .deals-ctl select{width:100%}
+}
 @media (max-width:760px){
   .wrap{padding:0 16px}
   .masthead{padding:44px 0 26px}
@@ -334,12 +387,12 @@ footer .fine{margin-top:26px;font-family:var(--mono);font-size:.66rem;color:var(
 <div class="wrap">
 
 <header class="masthead">
-  <p class="eyebrow"><b>2026年10月</b> <span>／</span> <span>8月版からの更新</span> <span>／</span> <span>最終更新 10月10日</span> <span>／</span> <span>AGENT INFRASTRUCTURE OCCUPANCY</span></p>
+  <p class="eyebrow"><b>2026年10月</b> <span>／</span> <span>8月版からの更新</span> <span>／</span> <span>最終更新 10月19日</span> <span>／</span> <span>AGENT INFRASTRUCTURE OCCUPANCY</span></p>
   <h1>AIエージェント基盤の占有図
     <span class="thin">誰が何を作り、どこが空いているか — 10月版</span>
   </h1>
   <p class="lede">8月版の起点は、Y CombinatorのRFS「Software for Agents」だった。この2か月で大きく動いたのは二つの層である。一つは<em>エージェント1体ごとに状態を払い出す層</em>で、SupabaseがTursoを買い、新規データベースのおよそ7割がエージェントやAIツールによって作られていると説明した。もう一つは<em>エージェントを統制する層</em>で、NHIの独立ベンダーがほぼ大手に買われ、残った専業には$100M級の資金が入った。ブラウザの側からも、Islandが人とエージェントの統制点を名乗った。</p>
-  <p class="lede">下の目盛りは、1本の線が1つの企業またはOSSプロジェクトである。線の粗密がそのまま参入余地を表す。<em>白抜きの線は8月版以降に地図へ加わったもの</em>を示す。列をクリックすると該当層に移動する。</p>
+  <p class="lede">下の目盛りは、1本の線が1つの企業またはOSSプロジェクトである。線の粗密がそのまま参入余地を表す。<em>白抜きの線は8月版以降に地図へ加わったもの</em>を示す。列をクリックすると該当層に移動する。各層の下には、2025年1月からの<a href="#deals-sec" style="color:inherit">買収と主要な調達の年表</a>を置いた。</p>
   <noscript><p class="noscript">この図はJavaScriptで描画しています。表示されない場合は、ブラウザのJavaScriptを有効にしてください。</p></noscript>
 
   <section class="tally" aria-label="層ごとの占有プロファイル">
@@ -380,6 +433,29 @@ footer .fine{margin-top:26px;font-family:var(--mono);font-size:.66rem;color:var(
 </div>
 
 <main id="stack"></main>
+
+<section class="sec" id="deals-sec">
+  <div class="sec__head">
+    <p class="sec__kicker">Deal log ／ 2025.01 — 2026.10</p>
+    <h2 class="sec__title">買収と主要な調達の年表</h2>
+    <p class="sec__sub">13層に関わる買収と、地図の判定に効いた主要な調達を、発表日の順に並べた。行を開くと、対象企業のビジネスモデル、解消するペイン、ソリューション、キャッシュポイント、そして顧客がその製品を採用しない場合の現実的な代替（BATNA）が出る。</p>
+  </div>
+  <div class="deals-ctl" role="group" aria-label="年表の絞り込み">
+    <button class="chip" data-dp="all" aria-pressed="true">全期間</button>
+    <button class="chip" data-dp="pre" aria-pressed="false">8月版まで</button>
+    <button class="chip" data-dp="post" aria-pressed="false">8月版以降</button>
+    <span class="sep"></span>
+    <button class="chip" data-dk="all" aria-pressed="true">買収＋調達</button>
+    <button class="chip" data-dk="買収" aria-pressed="false">買収</button>
+    <button class="chip" data-dk="調達" aria-pressed="false">調達</button>
+    <span class="sep"></span>
+    <select id="dlLayer" aria-label="層で絞り込む"><option value="all">すべての層</option></select>
+    <button class="chip chip--theme" id="dlOpen">すべて開く</button>
+  </div>
+  <p class="deals-cnt" id="dlCount"></p>
+  <div id="deals"></div>
+  <p class="deals-note">ビジネスモデル以下の5項目は公開情報をもとにした整理で、キャッシュポイントの課金単位とBATNAには解釈を含む。買収済みの企業は、買収前の独立した状態で書いている。金額は発表値または報道値で、買い手の決算書類にある取得対価と食い違うものは併記した。「8月版まで」は8月版（2026年8月8日）以前の発表を指す。2024年以前の案件（Palo Alto NetworksによるTalon、CiscoによるRobust Intelligenceなど）は含めていない。</p>
+</section>
 
 <section class="sec">
   <div class="sec__head">
@@ -453,6 +529,7 @@ footer .fine{margin-top:26px;font-family:var(--mono);font-size:.66rem;color:var(
     <li>AWS Big Data Blog「AWS and DuckLabs: Building the future of analytics together」2026-08-26</li>
     <li>MotherDuck「DuckDB outgrows its nest」2026-08-26、DuckDB公式FAQ</li>
     <li>GeekWire（Amazon、DuckLabs買収）2026-08-26、Futurum（同）2026-08-28</li>
+    <li>年表の追加分：各社の買収発表（Check Point、Palo Alto Networks、Zscaler、Akamai、OpenAI、Anthropic、Mintlify、WSO2）、TechCrunch（CoreWeave、Humanloop）、SecurityWeek（Chronosphere、SquareX）、Globes（Koi）、Verdict（Tecton）、heise（The Browser Company）、SiliconANGLE（Privy）、tech.eu（Invariant Labs）、decryptiondigest（SentinelOne、F5、Cato）、guptadeepak.com（決算書類の取得対価）</li>
     <li>8月版の出典（YC RFS、celld、arXiv:2606.20570、agenticplug.ai ほか）は引き続き参照</li>
   </ul>
   <p class="fine">
@@ -460,6 +537,7 @@ footer .fine{margin-top:26px;font-family:var(--mono);font-size:.66rem;color:var(
     2026年10月10日、Recoの調達とMicrosoft Agent 365の位置づけをL4、L5、L9に追記した。<br>
     同じ10月10日、IslandのシリーズFと企業向けブラウザの動向をL7、L9、買い手の類型、論点に追記した。SquareXとLayerXの買収は当事者の発表を直接確認していない。IslandのARRの推計値はContrary Research（2025年8月）に拠る。<br>
     同じ10月10日、AWSによるDuckLabsの買収をL3、買い手の類型、論点に追記した。AWSのマネージドサービスは発表されておらず、MotherDuckのCEOとFuturumの予想である。<br>
+    2026年10月19日、2025年1月からの買収と主要な調達の年表を加えた。あわせて地図を3点訂正した。HeliconeはMintlifyに買収済み（2026年3月）、Prompt SecurityはSentinelOneに買収済み（2025年8月）、AkamaiによるLayerXの買収は意向ではなく完了済み（2026年7月2日）である。<br>
     「混戦」「決着」「空白」の判定は調査時点の解釈であり、公式の分類ではない。掲載企業は各層の代表例であって網羅ではない。<br>
     「二次情報」「報道」とした数字、ARRの伸びなどベンダーの自己申告は、当事者の一次発表で確認していない。
   </p>
@@ -473,8 +551,8 @@ const S={open:"open",con:"contested",set:"settled"};
 const LAYERS=[
  {id:"L0",name:"モデルゲートウェイとルーティング",state:S.set,
   delta:"<b>決着のまま</b>。Portkeyがセキュリティ基盤に吸収された",
-  note:"どのモデルに投げるかを一箇所に集める層。Palo Alto NetworksがPortkeyを買い、AIセキュリティ基盤Prisma AIRSの制御点として組み込んだ。最も使われている部品が単体では儲からないという問題に、統制層（L9）の入口として買われるという出口が示された。",
-  players:[["LiteLLM",1],["Bifrost",1],["OpenRouter",0],["Portkey → Palo Alto",0],["TrueFoundry",0],["Cloudflare AI Gateway",0,1],["Helicone Gateway",0]]},
+  note:"どのモデルに投げるかを一箇所に集める層。Palo Alto NetworksがPortkeyを買い、AIセキュリティ基盤Prisma AIRSの制御点として組み込んだ。最も使われている部品が単体では儲からないという問題に、統制層（L9）の入口として買われるという出口が示された。HeliconeのゲートウェイもMintlifyに買われ、3月から保守モードにある。",
+  players:[["LiteLLM",1],["Bifrost",1],["OpenRouter",0],["Portkey → Palo Alto",0],["TrueFoundry",0],["Cloudflare AI Gateway",0,1],["Helicone Gateway → Mintlify",0]]},
 
  {id:"L1",name:"実行基盤（サンドボックス）",state:S.con,
   delta:"<b>混戦のまま</b>。争点が遅延と隔離の強さから、束ね売りに移った",
@@ -513,18 +591,18 @@ const LAYERS=[
  {id:"L7",name:"ブラウザとコンピュータ操作",state:S.con,
   delta:"<b>混戦のまま</b>。操作する側の変化は小さい。10月10日に、統制する側の企業向けブラウザを加えた",
   note:"エージェントが操作する側では、NebiusがTavilyを買い、AIクラウド事業者がエージェント向け検索を自社基盤に組み込んだ。差別化はアンチボット突破率、コールドスタート、自己ホスト可否の3軸のままである。統制する側では、Islandが9月24日に$400MのシリーズF（評価額$6.4B）を発表し、人とエージェントの両方を統治する「エージェンティック・コントロールプレーン」を名乗った。既存ブラウザに後付けする型の専業3社は大手に吸収され、独立系で残る最大手はIslandになった。弱点は、APIやMCPで直接やり取りするエージェントが社員の端末のブラウザを通らないことである（解釈）。判決は利用者のブラウザ上で動くエージェントに有利な先例だが、クラウド側のブラウザ基盤に当てはまるかは判断されていない。",
-  players:[["Browserbase",0,1],["Steel",1],["Hyperbrowser",0],["Kernel",0],["TinyFish",0],["Anchor",0],["Bright Data",0],["Browser Use",1],["Stagehand",1],["Skyvern",1],["Playwright MCP",1],["Crawl4AI",1],["Firecrawl",0],["Exa",0],["Tavily → Nebius",0],["AgentQL",0],["1Password Agentic Autofill",0],["Island $6.4B",0,1,1],["Talon → Palo Alto",0,0,1],["Chrome Enterprise Premium",0,1,1],["Edge for Business",0,1,1],["Seraphic → CrowdStrike",0,0,1],["SquareX → Zscaler",0,0,1],["LayerX → Akamai（意向）",0,0,1]]},
+  players:[["Browserbase",0,1],["Steel",1],["Hyperbrowser",0],["Kernel",0],["TinyFish",0],["Anchor",0],["Bright Data",0],["Browser Use",1],["Stagehand",1],["Skyvern",1],["Playwright MCP",1],["Crawl4AI",1],["Firecrawl",0],["Exa",0],["Tavily → Nebius",0],["AgentQL",0],["1Password Agentic Autofill",0],["Island $6.4B",0,1,1],["Talon → Palo Alto",0,0,1],["Chrome Enterprise Premium",0,1,1],["Edge for Business",0,1,1],["Seraphic → CrowdStrike",0,0,1],["SquareX → Zscaler",0,0,1],["LayerX → Akamai",0,0,1]]},
 
  {id:"L8",name:"可観測性と評価",state:S.con,
   delta:"<b>混戦のまま</b>。統合が続き、シミュレーションに専業の参入が始まった",
-  note:"独立系の評価、可観測性ベンダーが14か月で8社買収されたという集計がある。SnowflakeはObserveを約$1Bで、DatabricksはQuotient AIを買った。標準のOpenTelemetry GenAI semantic conventionsは、属性の大半がまだDevelopment安定度のままである。",
-  players:[["Langfuse → ClickHouse",1,1],["Braintrust $800M",0,1],["LangSmith",0],["Arize AX / Phoenix",1],["Helicone",1],["Comet Opik",1],["W&amp;B Weave",0],["AgentOps",0],["Laminar",0],["Confident AI",0],["Datadog LLM Obs",0],["MLflow",1],["OTel GenAI semconv",1],["Raindrop $50M",0,0,1],["groundcover",0,0,1],["Observe → Snowflake",0,0,1],["Quotient AI → Databricks",0,0,1]],
+  note:"独立系の評価、可観測性ベンダーが14か月で8社買収されたという集計がある。SnowflakeはObserveを約$1Bで、DatabricksはQuotient AIを買った。3月にはOpenAIがPromptfooを、MintlifyがHeliconeを買った（Heliconeは保守モード）。標準のOpenTelemetry GenAI semantic conventionsは、属性の大半がまだDevelopment安定度のままである。",
+  players:[["Langfuse → ClickHouse",1,1],["Braintrust $800M",0,1],["LangSmith",0],["Arize AX / Phoenix",1],["Helicone → Mintlify",1],["Comet Opik",1],["W&amp;B Weave",0],["AgentOps",0],["Laminar",0],["Confident AI",0],["Datadog LLM Obs",0],["MLflow",1],["OTel GenAI semconv",1],["Raindrop $50M",0,0,1],["groundcover",0,0,1],["Observe → Snowflake",0,0,1],["Quotient AI → Databricks",0,0,1],["Promptfoo → OpenAI",1,0,1]],
   gap:["entering","シミュレーション環境","RaindropがシリーズAで累計$50Mとし、本番トラフィックに対して変更を出荷前に試すSimulationsを進める。Amazon Bedrock AgentCore Evaluationsや音声の専業も入った。<strong>テキストと業務システム操作の側はまだ薄い</strong>。"]},
 
  {id:"L9",name:"セキュリティとガバナンス",state:S.con,
   delta:"<b>混戦のまま</b>。8月版の空白「シャドウエージェント発見」は埋まった",
-  note:"2026年4月から9月に12件、合計$435Mが入った（9月24日のIslandの$400Mは含めない。調達の裏づけが既存のブラウザとSASEの事業にあると判断した）。Palo Alto NetworksはCyberArk、Protect AI、Koi、Portkeyを取り込み、ブラウザ側の専業もCrowdStrike、Zscaler、Akamai（買収意向）が取り込んだ（L7）。9月29日には、SaaSセキュリティ出身のRecoが$55Mを追加調達し（累計$140M）、AT&amp;Tが顧客兼投資家として入った。Recoは280超のSaaS連携で作った権限グラフを、エージェントの発見に転用している。CSAの調査では、担当が知らないエージェントを見つけた組織が82%にのぼる。",
-  players:[["Prisma AIRS",0,1],["CrowdStrike",0],["Lakera → Check Point",0],["Prompt Security",0],["Lasso",0],["Straiker $64M",0],["General Analysis",0],["Zenity 累計$185M",0],["HiddenLayer $100M",0],["Protect AI → Palo Alto",0],["Noma",0],["Arthur",0],["Alice $140M",0,0,1],["Onyx $113M",0,0,1],["Reco 累計$140M",0,0,1],["NeMo Guardrails",1],["LLM Guard",1],["Llama Guard",1],["Guardrails AI",1],["MS Agent Governance Toolkit",1]],
+  note:"2026年4月から9月に12件、合計$435Mが入った（9月24日のIslandの$400Mは含めない。調達の裏づけが既存のブラウザとSASEの事業にあると判断した）。Palo Alto NetworksはCyberArk、Protect AI、Koi、Portkeyを取り込み、ブラウザ側の専業もCrowdStrike、Zscaler、Akamaiが取り込んだ（L7）。9月29日には、SaaSセキュリティ出身のRecoが$55Mを追加調達し（累計$140M）、AT&amp;Tが顧客兼投資家として入った。Recoは280超のSaaS連携で作った権限グラフを、エージェントの発見に転用している。CSAの調査では、担当が知らないエージェントを見つけた組織が82%にのぼる。",
+  players:[["Prisma AIRS",0,1],["CrowdStrike",0],["Lakera → Check Point",0],["Prompt Security → SentinelOne",0],["Lasso",0],["Straiker $64M",0],["General Analysis",0],["Zenity 累計$185M",0],["HiddenLayer $100M",0],["Protect AI → Palo Alto",0],["Noma",0],["Arthur",0],["Alice $140M",0,0,1],["Onyx $113M",0,0,1],["Reco 累計$140M",0,0,1],["NeMo Guardrails",1],["LLM Guard",1],["Llama Guard",1],["Guardrails AI",1],["MS Agent Governance Toolkit",1]],
   gap:["filled","シャドウエージェント発見","専業として残る余地とした「発見」と「ツール呼び出し単位の実行時強制」の両方に資金が集中した。独立を保つ発見系の事業者はZenityやRecoのように<strong>累計$100M超</strong>になり、上からはMicrosoft Agent 365のバンドルが、横からはブラウザとネットワークを起点にするIslandが来ている（L7）。後発の入る余地は狭い。"]},
 
  {id:"L10",name:"エージェント向けWebとアクセス制御",state:S.open,
@@ -553,7 +631,7 @@ const CHANGES=[
  {t:"NHIの独立ベンダーがほぼ消えた",d:"Astrix、Entro、Permiso、Oasisが6月から9月に大手の傘下に入った。8月版の空白「発見とライフサイクル統治」は、もう空白ではない。"},
  {t:"統制層に資金が集中した",d:"2026年4月から9月に、エージェントのセキュリティとガバナンスへ12件、合計$435Mが入った。"},
  {t:"SaaSセキュリティの事業者が看板を掛け替えた",d:"Recoは「Dynamic SaaS Security」から「Agentic Security」へ名乗りを変え、$55Mを追加調達した。SaaS間連携のために作ったコネクタと権限グラフを、そのままエージェントの発見に転用している。",add:1},
- {t:"企業向けブラウザが、人とエージェントの統制点を名乗り始めた",d:"Islandが9月24日に$400MのシリーズFを発表し、評価額は$6.4Bになった。既存ブラウザに後付けする型の専業3社は、2026年にいずれも大手による買収か買収の意向が発表された。L7に企業向けブラウザを加えた。",add:1},
+ {t:"企業向けブラウザが、人とエージェントの統制点を名乗り始めた",d:"Islandが9月24日に$400MのシリーズFを発表し、評価額は$6.4Bになった。既存ブラウザに後付けする型の専業3社は、2026年にいずれも大手に買収された（LayerXは7月2日に完了）。L7に企業向けブラウザを加えた。",add:1},
  {t:"ハイパースケーラーが、分析エンジンの開発チームを取り込んだ",d:"AWSがDuckDBの開発元DuckLabsを買収した（8月26日発表、8月31日完了）。DuckDB本体はMITライセンスのまま非営利の財団に残り、AWSに移ったのは30人超の開発チームである。L3に分析エンジンを加えた。",add:1}
 ];
 
@@ -679,6 +757,189 @@ document.getElementById("buyers").innerHTML=BUYERS.map(b=>`
 
 /* ---- watch ---- */
 document.getElementById("watch").innerHTML=WATCH.map(w=>`<li><div><h3>${w.t}</h3><p>${w.d}</p></div></li>`).join("");
+
+/* ---- deal log ----
+   d: 発表日 / l: 層 / k: 買収|調達 / t: 対象企業 / by: 買い手またはラウンド / am: 金額 / post: 8月版以降の発表なら1（日付から自動判定、月だけの場合は明示）
+   bm: ビジネスモデル / pn: 解消するペイン / so: ソリューション / ca: キャッシュポイント / ba: 採用しない場合のBATNA / st: 状況と注記 */
+const TEMPORAL={bm:"OSSの永続実行エンジンと、その運用を引き受けるマネージド版（Temporal Cloud）のオープンコア",pn:"長時間かかる処理や分散した処理が途中で落ちると、どこまで進んだか分からず、再試行と状態管理を毎回作り込むことになる",so:"処理の各ステップの履歴を記録し、障害後に途中から再開させる実行エンジン。エージェントの長いループもそのまま載る",ca:"Temporal Cloudで実行されるアクション数と保持期間。自己ホストの企業にはサポート契約",ba:"キュー、cron、DBで状態機械を自作する。またはAWS Lambda Durable FunctionsやCloudflare Workflowsなどクラウドの標準実装、DBOSのようなPostgresだけで済ませる軽量な代替"};
+const DEALS=[
+ {d:"2025-03-04",l:"L8",k:"買収",t:"Weights &amp; Biases",by:"CoreWeave",am:"$1.7B",st:"2025年5月に完了",
+  bm:"機械学習チーム向けのSaaS。実験管理から始まり、LLMアプリのトレースと評価（Weave）に広げた",pn:"モデルの学習実験やプロンプトの変更が個人の手元に散らばり、何が効いたかをチームで再現できない",so:"実験の記録、比較、モデルの版管理、LLMアプリのトレースと評価を一つの画面で扱う",ca:"利用者の席数と、記録するデータ量（トレース量）に応じた年額契約",ba:"MLflowなどのOSSを自前で運用する。またはSageMakerやVertex AIに付属する実験管理で済ませる"},
+ {d:"2025-05",l:"L3",k:"買収",t:"Neon",by:"Databricks",am:"約$1B（報道）",st:"2026年2月にLakebaseとして一般提供",
+  bm:"使った分だけ払うサーバーレスPostgres。無料枠から開発者を集める",pn:"アプリやエージェントがデータベースを大量に作るが、常時起動のPostgresでは費用と起動時間が合わない",so:"ストレージと計算を分け、数百ミリ秒で起動し、使わない間は止まるPostgres。ブランチで複製も即座に作れる",ca:"計算の稼働時間（コンピュートユニット時間）とストレージ容量",ba:"RDSやCloud SQLの常時起動インスタンスを複数のアプリで共有する。SupabaseなどほかのマネージドPostgresや、手元のSQLiteで済ませる"},
+ {d:"2025-06",l:"L3",k:"買収",t:"Crunchy Data",by:"Snowflake",am:"約$250M（報道）",st:"Snowflake Postgresの基盤に",
+  bm:"企業と政府機関向けに堅牢化したPostgresのサポート契約とマネージドサービス",pn:"規制の厳しい組織が、業務システムのPostgresを安全に運用し、監査に耐える体制を自前で持てない",so:"セキュリティ要件を満たすPostgresのディストリビューション、Kubernetes上の運用、マネージド版（Crunchy Bridge）",ca:"サポートのサブスクリプションと、マネージド版のインスタンス利用料",ba:"Amazon RDSやAuroraに移る。自前で運用し、必要なときだけ外部のPostgres専門家に頼む"},
+ {d:"2025-06-02",l:"L11",k:"買収",t:"Moesif",by:"WSO2",am:"非開示（全額現金）",st:"",
+  bm:"API提供者向けのSaaS。利用分析と使用量ベースの課金をつなぐ",pn:"APIやMCPサーバを有料化したいが、誰がどれだけ使ったかの計測と請求の連携を手作りしている",so:"APIの利用を顧客単位で計測・分析し、Stripeなどの請求システムに使用量を流す",ca:"計測するAPIイベント量に応じた月額",ba:"APIゲートウェイのログとStripe Billingを自前でつなぐ。KongやApigeeに付属する分析と課金で済ませる"},
+ {d:"2025-06-11",l:"L6",k:"買収",t:"Privy",by:"Stripe",am:"非開示",st:"AgentCore Paymentsの部品として使われている（8月版）",
+  bm:"開発者向けのウォレット基盤API。アプリの利用者数に応じた従量課金",pn:"アプリに暗号資産のウォレットを組み込むには鍵管理とシードフレーズが壁になり、一般の利用者が離脱する",so:"メールやSSOでログインした時点で、利用者ごとの自己管理型ウォレットを自動で作る。送金上限やマルチシグなどのポリシーも掛けられる",ca:"ウォレットを使う月間アクティブ利用者数（解釈）",ba:"Coinbase Developer PlatformやTurnkeyなど別のウォレット基盤を使う。鍵管理を自作するか、カード決済だけに留める"},
+ {d:"2025-06-24",l:"L4",k:"買収",t:"Invariant Labs",by:"Snyk",am:"非開示",st:"Snyk Labsに統合",
+  bm:"研究発のOSSと商用製品。買収後はSnykの開発者セキュリティ製品の一部になった",pn:"MCPサーバ経由のツールポイズニングなど、エージェント特有の攻撃を見つける手段がない",so:"エージェントの挙動を監視してルールで止めるGuardrailsと、MCPサーバの脆弱性スキャン",ca:"独立時の売上は小さかったと見られる（解釈）。買収後はSnykの席数ライセンスに含まれる",ba:"使ってよいMCPサーバを許可リストにして手作業で審査する。OSSのスキャナを自分で回す"},
+ {d:"2025-04",l:"L9",k:"買収",t:"Protect AI",by:"Palo Alto Networks",am:"約$634.5M（決算書類）",st:"2025年7月22日に完了。Prisma AIRSの中核に",
+  bm:"企業向けのAIセキュリティ製品群のサブスクリプション",pn:"社外から取り込むモデルや自社のAIアプリに、悪性のモデルファイルや脆弱性が混じっても気づけない",so:"モデルファイルのスキャン、自動レッドチーミング、実行時の防御を、AIの開発から運用まで通して提供する",ca:"保護するモデル数やアプリ数に応じた年額契約（解釈）",ba:"Hugging Faceなど配布元の検査に頼る。社内のセキュリティチームが手作業でレッドチームを行う"},
+ {d:"2025-07-30",l:"L5",k:"買収",t:"CyberArk",by:"Palo Alto Networks",am:"発表時約$25B（取得対価$21.1B）",st:"2026年2月11日に完了",
+  bm:"特権アクセス管理の最大手。永続ライセンスからSaaSのサブスクリプションへ移行済み",pn:"管理者権限や機械の資格情報が乗っ取りの主な経路になる。エージェントの普及で機械IDが急増している",so:"特権アカウントの保管と監査、シークレット管理、機械IDの管理を一つの基盤で提供する",ca:"保護する利用者数、機械ID数、端末数に応じた年額",ba:"クラウド各社のIAMとシークレットマネージャ、HashiCorp Vaultなどを組み合わせて運用する"},
+ {d:"2025-08",l:"L5",k:"買収",t:"Axiom Security",by:"Okta",am:"非開示",st:"",
+  bm:"クラウド型の特権アクセス管理SaaS",pn:"クラウドやデータベースへの強い権限が常時付与されたまま残り、エージェントが新しい特権アカウントを次々に作る",so:"必要なときだけ権限を払い出し、承認を自動化するジャストインタイムのアクセス",ca:"保護する利用者とリソースの数",ba:"CyberArkなど既存の特権アクセス管理を使う。クラウドのIAMで手動付与し、定期的に棚卸しする"},
+ {d:"2025-08-05",l:"L9",k:"買収",t:"Prompt Security",by:"SentinelOne",am:"約$250M（決算書類では$160.2M）",st:"2025年9月5日に完了",
+  bm:"企業向けSaaS。社員の生成AI利用と自社AIアプリの両方を守る",pn:"社員が生成AIに機密を貼り付ける。自社のAIアプリがプロンプトインジェクションを受ける",so:"ブラウザ拡張やゲートウェイで、生成AIへの入出力を検査し、マスキングや遮断を行う",ca:"従業員数（席）またはアプリ単位の年額（解釈）",ba:"生成AIの利用を一律に禁止する。既存のDLPやCASBの機能で代用する"},
+ {d:"2025-08-13",l:"L8",k:"買収",t:"Humanloop（チーム）",by:"Anthropic",am:"非開示",st:"人材のみの取得で資産とIPは対象外。製品は終了",
+  bm:"プロンプト管理と評価のSaaS。席数と利用量で課金",pn:"プロンプトの版管理と品質評価が表計算と勘に頼っていて、変更の良し悪しを判断できない",so:"プロンプトの版管理、評価の実行、本番ログの観測を一つにまとめる",ca:"席数とログ量に応じた月額・年額",ba:"Langfuse、Braintrust、LangSmithなど同種の製品に移る。実際に既存顧客は移行を求められた"},
+ {d:"2025-08-22",l:"L3",k:"買収",t:"Tecton",by:"Databricks",am:"非開示（直近評価額$900M）",st:"Agent Bricksに統合",
+  bm:"特徴量ストアの企業向けSaaS",pn:"エージェントや推薦に必要な最新の文脈データを、低遅延で本番に渡す仕組みを各社が自作している",so:"ストリーミングから特徴量を計算し、ミリ秒単位で配信する。エージェントにリアルタイムの文脈を渡す",ca:"計算と配信の利用量を含む年額契約",ba:"OSSのFeastやRedisで自前のパイプラインを組む"},
+ {d:"2025-09",l:"L7",k:"買収",t:"The Browser Company",by:"Atlassian",am:"$610M（現金）",st:"Arcは開発停止、AIブラウザDiaに集中",
+  bm:"個人向けブラウザ。無料版と有料プラン",pn:"仕事の大半がブラウザのタブの中で起きるのに、AIがタブをまたいだ文脈を扱えない",so:"開いているタブの内容を文脈にして質問や作業ができるAIブラウザDia",ca:"有料プランの月額サブスクリプション",ba:"ChromeとGemini、EdgeとCopilot、ChatGPT Atlas、Cometなど、既存ブラウザに載ったAI機能を使う"},
+ {d:"2025-09-16",l:"L9",k:"買収",t:"Lakera",by:"Check Point",am:"約$300M（報道）",st:"",
+  bm:"開発者向けのAPIと企業契約",pn:"LLMアプリへのプロンプトインジェクションと情報漏えいを、実行時に止める手段がない",so:"LLMの入出力を検査するAPI（Lakera Guard）と、自動レッドチーミング",ca:"検査するリクエスト量に応じた従量または年額",ba:"NeMo GuardrailsやLlama GuardなどのOSSを自前で運用する。クラウド付属のコンテンツフィルタで済ませる"},
+ {d:"2025-09",l:"L9",k:"買収",t:"Pangea",by:"CrowdStrike",am:"約$260M（報道）",st:"Falconに統合",
+  bm:"AIアプリ向けセキュリティ部品のAPI。従量課金",pn:"AIアプリごとに、ガードレール、個人情報のマスキング、監査ログを作り直している",so:"プロンプトの検査、マスキング、監査などをAPIの部品として提供する",ca:"API呼び出し量",ba:"OSSのガードレールを組み合わせる。クラウドの安全機能で済ませる"},
+ {d:"2025-09",l:"L9",k:"買収",t:"CalypsoAI",by:"F5",am:"$180M",st:"2025年9月26日に完了",
+  bm:"企業向けAIセキュリティ基盤のサブスクリプション",pn:"社内で複数のモデルが使われ、入出力を一元的に統制、監査できない",so:"推論の前段で入出力を検査する基盤と、自動レッドチーミング",ca:"年額ライセンス",ba:"APIゲートウェイに自前のルールを書く。クラウド付属の安全機能で済ませる"},
+ {d:"2025-09",l:"L9",k:"買収",t:"Aim Security",by:"Cato Networks",am:"約$300〜350M（報道）",st:"",
+  bm:"企業向けSaaS",pn:"社員がどの生成AIを何に使っているかが見えず、統制もできない",so:"AI利用の発見、ポリシー設定、実行時の保護",ca:"従業員数（席）",ba:"SSEやCASBの既存機能で代用する。一律に禁止する"},
+ {d:"2025-11",l:"L9",k:"買収",t:"SPLX",by:"Zscaler",am:"非開示",st:"Zero Trust Exchangeに統合",
+  bm:"AIレッドチーミングとAI資産管理のSaaS",pn:"本番に出す前に、AIアプリの脆弱性を網羅的に試す手段がない。社内のモデルやMCPサーバの所在も分からない",so:"自動レッドチーミング、プロンプトの堅牢化、モデルとMCPサーバの発見",ca:"対象アプリ数やテスト量に応じた年額（解釈）",ba:"人手のレッドチームを雇う。PromptfooなどのOSSで自前に試す"},
+ {d:"2025-11",l:"L5",k:"買収",t:"Stytch",by:"Twilio",am:"$104.1M",st:"",
+  bm:"開発者向けの認証API。月間アクティブ利用者数での従量課金",pn:"ログイン、B2BのSSO、不正検知を自作すると時間がかかる。エージェントやMCPクライアントからの認可にも対応が要る",so:"パスワードレス認証、B2B SSO、MCP向けのOAuth（Connected Apps）、端末の指紋による不正検知",ca:"月間アクティブ利用者数",ba:"Auth0、WorkOS、Clerk、Amazon Cognitoなどを使う"},
+ {d:"2025-11-19",l:"L8",k:"買収",t:"Chronosphere",by:"Palo Alto Networks",am:"$3.35B",st:"",
+  bm:"クラウドネイティブ向け可観測性のSaaS",pn:"メトリクスとログが爆発的に増え、可観測性の費用がインフラ費用並みに膨らむ",so:"取り込む観測データを取捨・集約して量を減らしつつ、障害調査に必要なものを残す",ca:"取り込むデータ量",ba:"Datadogを使い続ける。GrafanaとPrometheusを自前で運用する"},
+ {d:"2025-12-03",l:"L1",k:"買収",t:"Bun",by:"Anthropic",am:"非開示",st:"OSS（MIT）のまま継続。Claude Codeの配布と実行に使われる",
+  bm:"OSSのJavaScriptランタイム。買収前は売上をほぼ持たず、VC資金で開発していた（解釈）",pn:"JavaScriptの実行、パッケージ導入、テスト、バンドルが遅く、道具が分かれている",so:"高速なランタイム、パッケージマネージャ、バンドラ、テストランナーを一つにしたもの",ca:"なし（ホスティング事業は構想段階だった）",ba:"Node.jsとnpm、pnpm、Denoを使う"},
+ {d:"2025-12-04",l:"L5",k:"買収",t:"Veza",by:"ServiceNow",am:"約$1B（報道）",st:"AIコントロールタワーに統合",
+  bm:"企業向けのID セキュリティSaaS",pn:"人、機械、エージェントの誰が何にアクセスできるかを、システムをまたいで把握できない",so:"権限をグラフで可視化するAccess Graphと、最小権限化と棚卸しの自動化",ca:"接続するシステム数とID数に応じた年額（解釈）",ba:"SailPointなどのIGAの定期棚卸しや、表計算による手作業の権限レビューを続ける"},
+ {d:"2026-01",l:"L5",k:"買収",t:"SGNL",by:"CrowdStrike",am:"約$740M（取得対価は約$637M）",st:"",
+  bm:"継続的認可の企業向けSaaS",pn:"一度与えた権限がずっと残る。エージェントは人間より速く権限を使う",so:"状況やリスクに応じてアクセスを都度判定し、即座に取り消す継続的認可",ca:"保護するID数",ba:"IdPの条件付きアクセスと、定期的な権限レビューで済ませる"},
+ {d:"2026-01-13",l:"L7",k:"買収",t:"Seraphic",by:"CrowdStrike",am:"約$420M（報道）",st:"",
+  bm:"ブラウザセキュリティのSaaS",pn:"専用ブラウザを全社に配らずに、ブラウザ内の攻撃、情報漏えい、AI利用を統制したい",so:"既存のブラウザにランタイムを後付けし、企業向けブラウザ並みの保護をかける",ca:"利用者数または端末数",ba:"Islandなどの専用ブラウザに置き換える。Chrome Enterprise Premiumで済ませる"},
+ {d:"2026-01-16",l:"L8",k:"買収",t:"Langfuse",by:"ClickHouse",am:"非開示",st:"OSS（MIT）は継続",
+  bm:"OSSのLLM可観測性とクラウド版のオープンコア",pn:"LLMアプリのトレース、評価、プロンプト管理を、データを外に出さずに自社で持ちたい",so:"自己ホストできるOSSのトレース、評価、プロンプト管理",ca:"クラウド版の取り込みイベント量と、企業向け機能のライセンス",ba:"OSSを自己ホストし続ける（OSSは残る）。LangSmith、Braintrust、Arize Phoenixに移る"},
+ {d:"2026-01",l:"L10",k:"買収",t:"Human Native",by:"Cloudflare",am:"非開示",st:"",
+  bm:"権利者とAI開発者をつなぐデータ取引のマーケットプレイス",pn:"AI企業はライセンス済みの学習データを得にくく、権利者はクロールされても対価を得られない",so:"コンテンツの権利処理と価格付けを行い、AI開発者に提供する市場",ca:"取引ごとの手数料（解釈）",ba:"個別に権利者とライセンス交渉する。無断クロールとその遮断のいたちごっこを続ける"},
+ {d:"2026-02",l:"L8",k:"買収",t:"Observe",by:"Snowflake",am:"約$1B",st:"2026年2月2日に完了",
+  bm:"データレイク上に作った可観測性のSaaS",pn:"ログ、メトリクス、トレースを安く大量に保管し、横断して調べたい",so:"Snowflake上に観測データを集め、関係をたどって障害を調べる",ca:"取り込み量とクエリ量",ba:"Datadog、Splunk、Grafanaを使う"},
+ {d:"2026-02",l:"L7",k:"買収",t:"Tavily",by:"Nebius",am:"現金$177.3M＋追加支払いの可能性",st:"",
+  bm:"エージェント向け検索APIの従量課金。無料枠から開発者を集める",pn:"エージェントが、Web検索の結果をLLMにそのまま渡せる形で取得できない",so:"検索、抽出、要約をまとめたLLM向けの検索API",ca:"検索回数に応じたAPIクレジット",ba:"Exa、Brave Search API、モデル提供元の組み込み検索を使う。自前でクロールする"},
+ {d:"2026-02-05",l:"L7",k:"買収",t:"SquareX",by:"Zscaler",am:"非開示",st:"発表と同日に完了",
+  bm:"ブラウザ拡張型のセキュリティSaaS",pn:"悪性の拡張機能、フィッシング、生成AIへの漏えいを、ブラウザの中で検知できない",so:"既存のブラウザに拡張機能として入れるブラウザ検知・対応（BDR）",ca:"利用者数",ba:"専用ブラウザに置き換える。SWGやSSEなどネットワーク側の検査で代用する"},
+ {d:"2026-02-17",l:"L9",k:"買収",t:"Koi",by:"Palo Alto Networks",am:"約$400M（報道。決算書類では$231M）",st:"",
+  bm:"端末側のソフトウェア統制SaaS",pn:"開発者が入れる拡張機能、パッケージ、エージェント用のプラグインに、悪性のものが混じる",so:"マーケットやレジストリの配布物をAIで解析し、端末への導入を許可・遮断する",ca:"端末数",ba:"許可リストと手作業の審査で運用する。EDRの事後検知に頼る"},
+ {d:"2026-03-03",l:"L8",k:"買収",t:"Helicone",by:"Mintlify",am:"非開示",st:"保守モードに移行し、顧客には他製品への移行を支援",
+  bm:"OSSのLLM可観測性とゲートウェイ。クラウド版は無料枠と月額プラン",pn:"LLM呼び出しのログ、費用、遅延を手軽に見たい",so:"接続先のURLを差し替えるだけで使えるプロキシ型の可観測性とAIゲートウェイ",ca:"月額プランとリクエスト量",ba:"Langfuseに移る。LiteLLMやOpenRouterに付属するログと利用統計で済ませる"},
+ {d:"2026-03-09",l:"L8",k:"買収",t:"Promptfoo",by:"OpenAI",am:"非開示",st:"OSSのCLIは継続。OpenAI Frontierに統合",
+  bm:"OSSの評価・レッドチーミングCLIと企業版のオープンコア",pn:"LLMアプリの品質と脆弱性を、出荷前に体系的に試す手段がない",so:"評価とレッドチーミングをテストのように回すCLIと、企業向けの管理機能。Fortune 500の4分の1超が利用",ca:"企業版の年額契約",ba:"自作の評価スクリプトを回す。BraintrustやLangSmithの評価機能を使う"},
+ {d:"2026-03",l:"L8",k:"買収",t:"Quotient AI",by:"Databricks",am:"非開示",st:"",
+  bm:"エージェント評価のSaaS",pn:"エージェントの品質を継続的に測り、改善に回す仕組みがない",so:"エージェントの評価と、その結果を使った強化学習",ca:"年額契約",ba:"MLflowの評価機能や自作の評価で済ませる"},
+ {d:"2026-04-30",l:"L0",k:"買収",t:"Portkey",by:"Palo Alto Networks",am:"非開示（決算書類で$117M）",st:"2026年5月29日に完了",
+  bm:"OSSのゲートウェイとSaaSのオープンコア",pn:"複数モデルへの呼び出しの経路、費用、障害時の切り替えを一元管理できない",so:"ルーティング、フォールバック、キャッシュ、ガードレール、監視を備えたAIゲートウェイ",ca:"記録するリクエスト量に応じた月額",ba:"LiteLLMを自前で運用する。Cloudflare AI Gatewayなどクラウド付属のゲートウェイを使う"},
+ {d:"2026-05-04",l:"L5",k:"買収",t:"Astrix Security",by:"Cisco",am:"約$400M（報道）",st:"2026年6月29日に完了",
+  bm:"非人間IDのセキュリティSaaS",pn:"APIキー、サービスアカウント、OAuthアプリ、エージェントの所在と権限が分からない",so:"非人間IDの発見、リスク評価、所有者の紐付け、廃止までのライフサイクル管理",ca:"接続するSaaSやクラウドの数とID数（解釈）",ba:"シークレットマネージャと手作業の棚卸しで済ませる"},
+ {d:"2026-05",l:"L5",k:"買収",t:"Natoma",by:"Snowflake",am:"非開示",st:"",
+  bm:"エージェントのIDとアクセス管理のSaaS",pn:"エージェントがMCP経由で社内システムに触るとき、誰の権限で何をしてよいかを管理できない",so:"MCPサーバの集約と、エージェントのIDとアクセス管理",ca:"年額契約",ba:"IdPと自前のMCPゲートウェイを組み合わせる"},
+ {d:"2026-05-14",l:"L7",k:"買収",t:"LayerX",by:"Akamai",am:"約$205M",st:"2026年7月2日に完了",
+  bm:"ブラウザ拡張型のセキュリティSaaS",pn:"既存のブラウザのまま、生成AIへの貼り付けや拡張機能のリスクを制御したい",so:"ブラウザ拡張によるセキュリティと、AI利用のリアルタイム制御",ca:"利用者数",ba:"専用ブラウザに置き換える。SSEだけで済ませる"},
+ {d:"2026-05-18",l:"L4",k:"買収",t:"Stainless",by:"Anthropic",am:"非開示",st:"今後はAnthropic専用と報道",
+  bm:"API提供者向けのSaaS",pn:"APIの各言語SDKとMCPサーバを手作業で作り、保守し続けるのは高くつく",so:"OpenAPIの仕様から、各言語のSDKとMCPサーバを自動生成する",ca:"生成するSDKの数や言語数に応じた月額・年額",ba:"SpeakeasyなどほかのSDK生成サービスや、OSSのOpenAPI Generatorを使う。手で書く"},
+ {d:"2026-06-11",l:"L1",k:"買収",t:"Ona（旧Gitpod）",by:"OpenAI",am:"非開示",st:"買収合意を発表",
+  bm:"クラウド開発環境のSaaS。顧客のクラウド内で動く版もある",pn:"エージェントを、データと認証情報が社外に出ない環境で、何時間も動かしたい",so:"顧客のVPC内で動く開発環境と、そこで走るエージェント",ca:"席数と開発環境の稼働時間",ba:"社内で開発用のVMやDevcontainerを用意する。GitHub Codespacesを使う"},
+ {d:"2026-06",l:"L5",k:"買収",t:"Entro Security",by:"SailPoint",am:"約$122.6M（決算書類。報道は約$200M）",st:"2026年6月29日に完了",
+  bm:"非人間IDとシークレットのセキュリティSaaS",pn:"コードや設定に散らばったシークレットと機械IDが、放置されたまま漏えいする",so:"シークレットと非人間IDの発見、所有者の紐付け、修復",ca:"保護するID数（解釈）",ba:"GitGuardianなどのシークレットスキャナと手作業の対応で済ませる"},
+ {d:"2026-07-28",l:"L5",k:"買収",t:"Oasis Security",by:"Cyera",am:"約$1B",st:"2026年9月3日に完了",
+  bm:"非人間IDのセキュリティSaaS",pn:"非人間IDとエージェントの発見から廃止までを、人手では追い切れない",so:"非人間IDの発見、権限の可視化、自動の廃止とローテーション",ca:"保護するID数（解釈）",ba:"シークレットマネージャと手作業の棚卸しで済ませる"},
+ {d:"2026-07-30",l:"L5",k:"買収",t:"Permiso Security",by:"Okta",am:"約$200M（報道）",st:"2026年8月26日に完了",
+  bm:"IDの脅威検知と対応（ITDR）のSaaS",pn:"人、機械、エージェントのIDを使った侵害を検知できない",so:"クラウドやSaaSのID活動を横断して監視し、乗っ取りや権限の悪用を検知する",ca:"監視するIDとクラウド環境の数（解釈）",ba:"SIEMに検知ルールを自作する。IdPに付属する検知で済ませる"},
+ {d:"2026-08",post:1,l:"L3",k:"買収",t:"Electric",by:"Databricks",am:"非開示",st:"",
+  bm:"OSSの同期エンジンとクラウド版",pn:"手元（ブラウザやエージェント）のデータと、サーバのPostgresの同期を自作している",so:"Postgresの同期エンジンと、ブラウザでも動くPostgres（PGlite）",ca:"クラウド版の同期の利用量",ba:"同期を自作する。Supabase RealtimeやFirebaseを使う"},
+ {d:"2026-08-22",l:"L3",k:"買収",t:"InstantDB（チーム）",by:"OpenAI",am:"非開示",st:"クラウド版は2027年8月31日までに移行が必要。OSS版は残る",
+  bm:"OSSのリアルタイムDBとクラウド版。無料枠と従量課金",pn:"リアルタイムに同期するアプリのバックエンドを作る手間が大きい",so:"クライアントから直接クエリでき、変更が即座に同期されるデータベース",ca:"クラウド版の利用量",ba:"Firebase、Supabase、Convexを使う"},
+ {d:"2026-08-26",l:"L3",k:"買収",t:"DuckLabs",by:"AWS",am:"非開示",st:"8月31日に完了。DuckDBは財団のもとでMITのまま",
+  bm:"外部資本を入れず、企業からの開発委託と支援契約で稼いできた",pn:"手元のデータを分析するのに、クラスタ型のデータウェアハウスは重く高い",so:"アプリのプロセス内で動く分析エンジンDuckDB（OSS）の開発",ca:"開発委託と支援の契約",ba:"DuckDBをOSSのまま使う。Polarsを使う。SnowflakeやBigQueryに投げる"},
+ {d:"2026-09-10",l:"L1",k:"買収",t:"Blaxel",by:"Baseten",am:"非開示",st:"製品は当面そのまま提供",
+  bm:"エージェント向けサンドボックスの従量課金",pn:"エージェント1体ごとにVMを払い出し、待機中は安く止めておきたい",so:"約25msで休止・再開するmicroVMと、サンドボックス間で共有できるファイルシステム",ca:"稼働時間とリソース量",ba:"E2B、Daytona、Modalを使う。Firecrackerで自前に組む"},
+ {d:"2026-10-02",l:"L3",k:"買収",t:"Turso",by:"Supabase",am:"非開示",st:"Supabaseは同時にGIC主導で$150Mを調達",
+  bm:"OSS（SQLite互換）とクラウド版。データベース数とストレージでの従量課金",pn:"エージェント1体ごとにデータベースを作ると、常時起動のDBでは費用が合わない",so:"1サーバで数百万のSQLite互換DBをホストし、休止中はストレージ代だけにする。エージェント向けファイルシステムAgentFS",ca:"データベース数、ストレージ、読み書き量",ba:"NeonなどのサーバーレスPostgresを使う。Cloudflare D1やDurable Objects、手元のSQLiteで済ませる"},
+
+ {d:"2025-02",l:"L8",k:"調達",t:"Arize AI",by:"シリーズC",am:"$70M",st:"",
+  bm:"OSS（Phoenix）と企業向けSaaS（Arize AX）",pn:"本番のモデルとLLMアプリの品質劣化に、利用者からの苦情が来るまで気づけない",so:"OpenTelemetryに沿ったトレース、評価、監視",ca:"取り込み量と席数",ba:"Phoenixを自己ホストする。LangfuseやDatadog LLM Observabilityを使う"},
+ {d:"2025-06",l:"L7",k:"調達",t:"Browserbase",by:"シリーズB",am:"$40M（評価額$300M）",st:"",
+  bm:"エージェント向けヘッドレスブラウザ基盤の従量課金と、OSSのStagehand",pn:"エージェント用のブラウザを大量に、安定して、ボット対策を越えて動かす運用が重い",so:"クラウドのヘッドレスブラウザ、セッション録画、ブラウザ操作のSDK",ca:"ブラウザの稼働時間と同時実行数",ba:"Playwrightとプロキシを自前で運用する。Steelを自己ホストする"},
+ {d:"2025-07",l:"L1",k:"調達",t:"E2B",by:"シリーズA",am:"$21M",st:"",
+  bm:"サンドボックスの従量課金と月額プラン",pn:"LLMが書いたコードを、本番環境を壊さずに安全に実行する場所がない",so:"Firecracker microVMのサンドボックスをSDKから即座に作る",ca:"vCPUとメモリの秒課金",ba:"Dockerで自前に隔離する。DaytonaやModalを使う"},
+ {d:"2025-09",l:"L2",k:"調達",t:"Inngest",by:"シリーズA",am:"$21M",st:"",
+  bm:"イベント駆動の永続実行SaaS。無料枠と従量課金",pn:"長時間の処理の再試行、待機、状態管理を、キューとcronで作り込んでいる",so:"関数をステップに分け、自動で再試行・再開させる実行基盤とAgentKit",ca:"実行ステップ数",ba:"Temporalを使う。キューとcronで自作する"},
+ {d:"2025-10",l:"L3",k:"調達",t:"Mem0",by:"シリーズA",am:"$24M",st:"",
+  bm:"OSSのメモリ層とクラウドAPI",pn:"エージェントが会話や作業をまたいで、利用者のことを覚えていない",so:"会話から事実を抽出して保存し、必要なときに取り出すメモリ層",ca:"メモリの追加・検索のAPI呼び出し量",ba:"ベクトルDBに自前で保存する。ZepやLettaを使う。Cloudflare Agent Memoryを待つ"},
+ Object.assign({d:"2026-02",l:"L2",k:"調達",t:"Temporal",by:"シリーズD",am:"$300M（評価額$5B）",st:"a16z主導"},TEMPORAL),
+ {d:"2026-05",l:"L1",k:"調達",t:"Modal",by:"シリーズC",am:"$355M（評価額$4.65B）",st:"9月には約$15Bでの交渉が報道（未確定）",
+  bm:"サーバーレス計算の従量課金",pn:"GPUやサンドボックスを、インフラの設定なしにコードから即座に使いたい",so:"PythonのコードからGPU、CPU、サンドボックスを秒単位で起動する基盤",ca:"GPUとCPUの稼働秒",ba:"クラウドのGPU VMを自前で管理する。RunPodやE2Bを使う"},
+ {d:"2026-08-03",l:"L9",k:"調達",t:"Zenity",by:"シリーズC",am:"$125M（累計$185M）",st:"Norwest主導",
+  bm:"エージェントのセキュリティとガバナンスのSaaS",pn:"Copilot StudioやAgentforceで社員が作るエージェントを、誰も把握、統制していない",so:"エージェントの発見、設定の姿勢管理、意図に基づく実行時の許可・修正・遮断",ca:"監視するプラットフォームとエージェントの規模に応じた年額（解釈）",ba:"各プラットフォームの管理画面で個別に見る。Microsoft Agent 365のバンドルで済ませる"},
+ {d:"2026-09-01",l:"L4",k:"調達",t:"AIR",by:"シード",am:"$50M",st:"SequoiaとGreenoaksが主導",
+  bm:"エージェントの追加部品を検査するSaaS",pn:"スキル、プラグイン、MCPサーバを入れる前に、安全かどうかを確かめる手段がない",so:"追加部品を実行前に発見・検査し、危険なものを除外する（評価した部品の約27%を除外）",ca:"年額契約（解釈）",ba:"許可リストと手作業の審査。JFrogとNVIDIAの署名付きレジストリを使う"},
+ Object.assign({d:"2026-09-14",l:"L2",k:"調達",t:"Temporal",by:"シリーズE",am:"$550M（評価額$12.55B）",st:"Lightspeed主導。年換算売上$250M超"},TEMPORAL),
+ {d:"2026-09-17",l:"L8",k:"調達",t:"Raindrop",by:"シリーズA",am:"累計$50M",st:"CRV主導",
+  bm:"本番のAIエージェントを監視するSaaS",pn:"エージェントの失敗が、利用者に見つかるまで分からない。変更を出す前に本番相当で試せない",so:"本番のやり取りから失敗を検知し、変更を本番トラフィックに対して事前に試すSimulations",ca:"監視するやり取りの量に応じた月額（解釈）",ba:"ログを人が読む。LangfuseやBraintrustの評価を使う"},
+ {d:"2026-09-24",l:"L7",k:"調達",t:"Island",by:"シリーズF",am:"$400M（評価額$6.4B）",st:"Evolution Equity Partners主導",
+  bm:"企業向けブラウザのSaaS。管理コンソールと利用者数の二本立て",pn:"VDIやネットワーク機器を重ねても、人とエージェントがブラウザの中で何をしているかを統制できない",so:"企業向けブラウザに、DLP、SASE、エージェントの統制を一つのポリシーで載せる",ca:"組織あたりの管理コンソール料と利用者数（英国G-Cloudでは年$250Kと1人年$200）",ba:"Chrome Enterprise Premium（月$6）やEdge for Businessで済ませる。ZscalerなどのSSEとVDIを続ける"},
+ {d:"2026-09-29",l:"L9",k:"調達",t:"Reco",by:"追加調達",am:"$55M（累計$140M）",st:"AT&amp;Tが顧客兼投資家",
+  bm:"SaaSセキュリティのSaaS",pn:"SaaSとエージェントのあいだの連携と権限が、誰にも見えていない",so:"280超のSaaS連携で作った権限グラフで、エージェントとその権限を発見する",ca:"保護する利用者数とSaaS数（解釈）",ba:"Microsoft Agent 365やServiceNowのAIコントロールタワーで済ませる"}
+];
+
+const isPost=x=>x.post?true:x.d>="2026-08-08";
+const dlState={p:"all",k:"all",l:"all"};
+const fmtDate=d=>d.replace(/-/g,".");
+const dlSel=document.getElementById("dlLayer");
+LAYERS.forEach(L=>{const o=document.createElement("option");o.value=L.id;o.textContent=`${L.id} ${L.name}`;dlSel.appendChild(o);});
+function renderDeals(){
+  const rows=DEALS.filter(x=>(dlState.p==="all"||(dlState.p==="post")===isPost(x))
+    &&(dlState.k==="all"||x.k===dlState.k)&&(dlState.l==="all"||x.l===dlState.l))
+    .sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);
+  const nA=rows.filter(x=>x.k==="買収").length, nF=rows.length-nA;
+  document.getElementById("dlCount").textContent=`${rows.length} 件 ／ 買収 ${nA} ・ 調達 ${nF}`;
+  let html="",year="";
+  rows.forEach(x=>{
+    const y=x.d.slice(0,4);
+    if(y!==year){year=y;html+=`<p class="dl-year">${y}</p>`;}
+    const head=x.k==="買収"
+      ?`${x.t}<span class="arr">→</span><span class="by">${x.by}</span>`
+      :`${x.t}<span class="by"> ／ ${x.by}</span>`;
+    html+=`<details class="deal" data-k="${x.k}">
+      <summary>
+        <span class="meta"><span class="dd">${fmtDate(x.d)}</span><span class="ly">${x.l}</span></span>
+        <span class="hd">${head}<span class="kd">${x.k}</span>${isPost(x)?'<span class="nw">8月以降</span>':''}</span>
+        <span class="am">${x.am}</span>
+        <span class="hint">${x.pn}</span>
+      </summary>
+      <dl class="body">
+        <dt>ビジネスモデル</dt><dd>${x.bm}</dd>
+        <dt>解消するペイン</dt><dd>${x.pn}</dd>
+        <dt>ソリューション</dt><dd>${x.so}</dd>
+        <dt>キャッシュポイント</dt><dd>${x.ca}</dd>
+        <dt>BATNA</dt><dd class="ba">${x.ba}</dd>
+        ${x.st?`<dt>状況</dt><dd class="st">${x.st}</dd>`:""}
+      </dl>
+    </details>`;
+  });
+  document.getElementById("deals").innerHTML=html||'<p class="deals-cnt">該当する事例はない。</p>';
+  dlOpenBtn.textContent="すべて開く";
+}
+const dlOpenBtn=document.getElementById("dlOpen");
+dlOpenBtn.addEventListener("click",()=>{
+  const ds=[...document.querySelectorAll("#deals details")];
+  const open=dlOpenBtn.textContent==="すべて開く";
+  ds.forEach(d=>d.open=open);
+  dlOpenBtn.textContent=open?"すべて閉じる":"すべて開く";
+});
+const bindChips=(attr,key)=>{
+  const cs=[...document.querySelectorAll(`.chip[${attr}]`)];
+  cs.forEach(c=>c.addEventListener("click",()=>{
+    dlState[key]=c.getAttribute(attr);
+    cs.forEach(x=>x.setAttribute("aria-pressed",String(x===c)));
+    renderDeals();
+  }));
+};
+bindChips("data-dp","p");bindChips("data-dk","k");
+dlSel.addEventListener("change",()=>{dlState.l=dlSel.value;renderDeals();});
+renderDeals();
 
 /* ---- theme ---- */
 const tt=document.getElementById("themeToggle");
